@@ -159,8 +159,10 @@ def register_routes(app: Flask):
         return redirect(url_for("admin_dashboard"))
 
 
+# Create application instance for Gunicorn
+application = create_app()
+
 if __name__ == "__main__":
-    application = create_app()
     port = int(os.environ.get("PORT", 5000))
     debug = os.environ.get("FLASK_ENV") != "production"
     application.run(host="0.0.0.0", port=port, debug=debug)

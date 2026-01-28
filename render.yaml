@@ -3,7 +3,7 @@ services:
     name: portfolio-website
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:application
+    startCommand: gunicorn --bind 0.0.0.0:$PORT app:application
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
