@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 
 from flask import (
@@ -8,6 +9,7 @@ from flask import (
     url_for,
     flash,
     session,
+    jsonify,
 )
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text, inspect
@@ -59,8 +61,13 @@ def create_app():
     app = Flask(__name__)
 
     # Basic configuration
-    app.config["SECRET_KEY"] = "change-this-secret-key"
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///portfolio.db"
+    app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "change-this-secret-key-in-production")
+    # Use environment variable for database URI if available (for production)
+    database_uri = os.environ.get("DATABASE_URL", "sqlite:///portfolio.db")
+    # Render uses postgres:// but SQLAlchemy expects postgresql://
+    if database_uri.startswith("postgres://"):
+        database_uri = database_uri.replace("postgres://", "postgresql://", 1)
+    app.config["SQLALCHEMY_DATABASE_URI"] = database_uri
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     db.init_app(app)
@@ -82,6 +89,11 @@ def register_routes(app: Flask):
     @app.route("/")
     def index():
         return render_template("index.html")
+
+    @app.route("/health")
+    def health():
+        """Health check endpoint for keep-alive and monitoring."""
+        return jsonify({"status": "healthy", "service": "portfolio"}), 200
 
     @app.post("/contact")
     def contact():
@@ -149,5 +161,7 @@ def register_routes(app: Flask):
 
 if __name__ == "__main__":
     application = create_app()
-    application.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    debug = os.environ.get("FLASK_ENV") != "production"
+    application.run(host="0.0.0.0", port=port, debug=debug)
 
