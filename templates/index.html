@@ -1,0 +1,776 @@
+{% extends "base.html" %}
+
+{% block title %}Ebube Okechukwu • Mechatronics, Cybersecurity & Software{% endblock %}
+
+{% block content %}
+<section
+  class="relative overflow-hidden border-b border-white/10 bg-gradient-to-b from-slate-900/10 to-slate-900/70 pb-16 pt-10 sm:pt-16"
+  id="hero"
+>
+  <div
+    class="pointer-events-none absolute inset-0 opacity-40 mix-blend-screen"
+    aria-hidden="true"
+  >
+    <div
+      class="absolute -left-32 top-10 h-64 w-64 rounded-full bg-primary-500/30 blur-3xl"
+    ></div>
+    <div
+      class="absolute bottom-10 right-0 h-72 w-72 rounded-full bg-sky-400/20 blur-3xl"
+    ></div>
+  </div>
+
+  <div
+    class="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 sm:px-6 lg:flex-row lg:items-center lg:gap-16 lg:px-8"
+  >
+    <div class="flex-1 space-y-6">
+      <p
+        class="inline-flex items-center gap-2 rounded-full border border-primary-400/40 bg-slate-900/60 px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-primary-100 shadow-sm"
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+        Available for remote & hybrid roles
+      </p>
+      <div class="space-y-3">
+        <h1
+          class="text-balance text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl"
+        >
+          Mechatronics Engineer,
+          <span class="text-primary-300">Cybersecurity Professional</span> &
+          Software Developer.
+        </h1>
+        <p class="max-w-xl text-sm text-slate-200 sm:text-base">
+          I design, secure, and build modern systems across
+          <span class="font-semibold text-primary-200"
+            >robotics, IoT, web applications, and cloud platforms</span
+          >—bridging hardware, software, and security to deliver resilient,
+          production-ready solutions.
+        </p>
+      </div>
+
+      <dl
+        class="grid gap-4 text-xs text-slate-200 sm:grid-cols-3 sm:text-sm md:max-w-xl"
+      >
+        <div class="rounded-xl border border-white/10 bg-slate-900/60 p-3">
+          <dt class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400">
+            Core Domains
+          </dt>
+          <dd class="mt-1 font-medium">
+            Mechatronics • Cybersecurity • Software Engineering
+          </dd>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-slate-900/60 p-3">
+          <dt class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400">
+            Location
+          </dt>
+          <dd class="mt-1 font-medium">Lagos, Nigeria (Global-ready)</dd>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-slate-900/60 p-3">
+          <dt class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400">
+            Contact
+          </dt>
+          <dd class="mt-1 font-medium">
+            <a
+              href="mailto:jetsamjoseph@gmail.com"
+              class="hover:text-primary-200"
+              >jetsamjoseph@gmail.com</a
+            >
+          </dd>
+        </div>
+      </dl>
+
+      <div class="flex flex-wrap items-center gap-4">
+        <a
+          href="#contact"
+          class="inline-flex items-center justify-center rounded-full bg-primary-500 px-5 py-2 text-sm font-medium text-slate-950 shadow-lg shadow-primary-500/40 hover:bg-primary-400"
+        >
+          Let’s build something
+        </a>
+        <a
+          href="#experience"
+          class="inline-flex items-center text-sm font-medium text-slate-200 hover:text-primary-200"
+        >
+          View experience
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            class="ml-1.5 h-4 w-4"
+          >
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="flex-1">
+      <div
+        class="relative mx-auto max-w-xs rounded-3xl border border-white/10 bg-slate-900/70 p-4 shadow-[0_18px_60px_rgba(15,23,42,0.7)]"
+      >
+        <div
+          class="absolute inset-x-6 -top-10 h-10 rounded-3xl bg-gradient-to-r from-primary-500/60 via-sky-400/60 to-emerald-400/60 opacity-70 blur-2xl"
+        ></div>
+        <div class="relative rounded-2xl bg-slate-900/70 p-3">
+          <div
+            class="relative overflow-hidden rounded-2xl border border-white/10"
+          >
+            <img
+              src="{{ url_for('static', filename='images/portrait-1.png') }}"
+              alt="Portrait of Ebube Okechukwu"
+              class="h-64 w-full object-cover sm:h-72"
+            />
+          </div>
+          <div class="mt-4 space-y-1 text-sm">
+            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400">
+              Profile
+            </p>
+            <p class="font-semibold">
+              Mechatronics Engineer • Cybersecurity • Software Development
+            </p>
+            <p class="text-xs text-slate-300">
+              I architect secure, intelligent systems—from CAD and robotics to
+              modern SaaS platforms—closing the gap between hardware,
+              application code, and security.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About & Skills -->
+<section
+  id="about"
+  class="border-b border-white/5 bg-slate-900/60 py-14 sm:py-16"
+>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-10 lg:grid-cols-[1.1fr,1.3fr] lg:items-start">
+      <div class="space-y-4">
+        <h2
+          class="text-sm font-semibold uppercase tracking-[0.25em] text-primary-200"
+        >
+          Profile
+        </h2>
+        <h3 class="text-xl font-semibold sm:text-2xl">
+          Engineering, security, and software in one profile.
+        </h3>
+        <p class="text-sm text-slate-200 sm:text-[0.95rem]">
+          I am a highly skilled and results-driven Mechatronics Engineer and
+          Python Software Developer with strong expertise in CAD design,
+          cybersecurity, and quality assurance. I design, develop, test, and
+          secure innovative engineering and software solutions that meet high
+          performance, reliability, and industry standards across diverse
+          technical domains.
+        </p>
+        <dl class="grid gap-3 text-xs text-slate-200 sm:grid-cols-2">
+          <div>
+            <dt class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400">
+              Email
+            </dt>
+            <dd class="mt-0.5">
+              <a
+                href="mailto:jetsamjoseph@gmail.com"
+                class="hover:text-primary-200"
+                >jetsamjoseph@gmail.com</a
+              >
+            </dd>
+          </div>
+          <div>
+            <dt class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400">
+              Phone
+            </dt>
+            <dd class="mt-0.5">+234 903 149 5094</dd>
+          </div>
+          <div>
+            <dt class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400">
+              Degree
+            </dt>
+            <dd class="mt-0.5">
+              B.Eng Mechatronics Engineering — AE-FUNAI (2020–2025)
+            </dd>
+          </div>
+          <div>
+            <dt class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400">
+              Location
+            </dt>
+            <dd class="mt-0.5">Lagos, Nigeria</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div id="skills" class="space-y-6">
+        <div class="flex items-center justify-between gap-4">
+          <h2
+            class="text-sm font-semibold uppercase tracking-[0.25em] text-primary-200"
+          >
+            Core Skills
+          </h2>
+          <p class="text-[0.7rem] text-slate-400">
+            Robotics • IoT • Cybersecurity • SaaS • CAD • Quality
+          </p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2">
+          <!-- Robotics & IoT -->
+          <article
+            class="rounded-2xl border border-primary-400/20 bg-slate-900/80 p-4 shadow-[0_18px_40px_rgba(15,23,42,0.8)]"
+          >
+            <h3 class="text-sm font-semibold text-primary-100">
+              Robotics, IoT & Embedded Systems
+            </h3>
+            <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+              <li>IoT-enabled robotic systems for automation and monitoring</li>
+              <li>Embedded programming on ESP32, Arduino, Raspberry Pi</li>
+              <li>Sensors, actuators, motors, Wi‑Fi, Bluetooth, MQTT, HTTP</li>
+              <li>Real-time control and remote dashboards</li>
+              <li>System architecture, testing, debugging, optimization</li>
+            </ul>
+          </article>
+
+          <!-- Cybersecurity -->
+          <article
+            class="rounded-2xl border border-emerald-400/20 bg-slate-900/80 p-4"
+          >
+            <h3 class="text-sm font-semibold text-emerald-100">
+              Cybersecurity & Information Security
+            </h3>
+            <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+              <li>API security (auth, authz, rate limiting, JWT/OAuth)</li>
+              <li>Web security, OWASP Top 10, threat modeling</li>
+              <li>Custom security tooling & automation</li>
+              <li>SIEM: log ingestion, correlation, dashboards, alerting</li>
+              <li>Linux hardening, scripting, labs & incident response</li>
+            </ul>
+          </article>
+
+          <!-- Software -->
+          <article
+            class="rounded-2xl border border-sky-400/20 bg-slate-900/80 p-4"
+          >
+            <h3 class="text-sm font-semibold text-sky-100">
+              Software Development & Cloud
+            </h3>
+            <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+              <li>SaaS web apps with scalable backends</li>
+              <li>RESTful APIs and service design</li>
+              <li>Full‑stack web development (Flask, Jinja, JS, Tailwind)</li>
+              <li>Security-focused tools and automation platforms</li>
+              <li>High-performance, secure static & dynamic sites</li>
+            </ul>
+          </article>
+
+          <!-- CAD & Quality -->
+          <article
+            class="rounded-2xl border border-fuchsia-400/20 bg-slate-900/80 p-4"
+          >
+            <h3 class="text-sm font-semibold text-fuchsia-100">
+              CAD, Mechanical Design & Quality
+            </h3>
+            <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+              <li>Autodesk Fusion 360 — 3D modeling & assemblies</li>
+              <li>Robotic parts, enclosures & manufacturing-ready models</li>
+              <li>DFM/DFA for 3D printing & CNC machining</li>
+              <li>Simulation: motion, stress, strength, load</li>
+              <li>QA processes, testing protocols & continuous improvement</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience & Certifications -->
+<section
+  id="experience"
+  class="border-b border-white/5 bg-slate-950/80 py-14 sm:py-16"
+>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-6 md:flex-row md:items-center">
+      <div class="flex-1">
+        <h2
+          class="text-sm font-semibold uppercase tracking-[0.25em] text-primary-200"
+        >
+          Experience
+        </h2>
+        <h3 class="mt-2 text-xl font-semibold sm:text-2xl">
+          Real-world delivery across software, cybersecurity, and CAD.
+        </h3>
+      </div>
+      <div class="flex-1 text-xs text-slate-300">
+        <p>
+          I work end-to-end—from concept and modeling, to implementation,
+          security, deployment, and continuous improvement—collaborating with
+          business and engineering stakeholders to ship resilient solutions.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-8 grid gap-5 lg:grid-cols-[1.5fr,1fr]">
+      <div class="space-y-4">
+        <!-- BetChief -->
+        <article
+          class="relative overflow-hidden rounded-2xl border border-emerald-400/30 bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-950/60 p-4 sm:p-5"
+        >
+          <div
+            class="pointer-events-none absolute -right-16 top-[-3rem] h-40 w-40 rounded-full bg-emerald-500/25 blur-3xl"
+          ></div>
+          <div class="relative space-y-1">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="text-sm font-semibold">Cybersecurity Professional</h3>
+              <p class="text-[0.7rem] text-emerald-300">
+                BetChief • 11/2025 – Present • Lagos, Nigeria
+              </p>
+            </div>
+            <p class="text-xs text-slate-200">
+              End‑to‑end platform security for an online betting platform
+              covering applications, APIs, microservices, and cloud assets.
+            </p>
+            <ul class="mt-2 space-y-1.5 text-xs text-slate-200">
+              <li>
+                Own security for web apps, REST APIs, microservices, and
+                databases using layered controls (network, IAM, encryption).
+              </li>
+              <li>
+                Perform penetration testing and vulnerability management with
+                tools like Burp Suite, OWASP ZAP, Nessus, and custom scripts.
+              </li>
+              <li>
+                Implement cloud security across AWS, Azure, and internal
+                servers, aligned with ISO, PCI DSS, and industry standards.
+              </li>
+              <li>
+                Monitor SIEM alerts, investigate incidents, lead response, and
+                maintain incident response playbooks.
+              </li>
+              <li>
+                Build automation tooling for audits, scanning, threat
+                intelligence, and security reporting.
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Villanova Software -->
+        <article
+          class="rounded-2xl border border-primary-400/30 bg-slate-900/80 p-4 sm:p-5"
+        >
+          <div class="space-y-1">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="text-sm font-semibold">Software Developer</h3>
+              <p class="text-[0.7rem] text-primary-200">
+                Villanova Realty • 11/2025
+              </p>
+            </div>
+            <p class="text-xs text-slate-200">
+              Designed and built the official Villanova Realty website to
+              showcase properties and power digital client acquisition.
+            </p>
+            <ul class="mt-2 space-y-1.5 text-xs text-slate-200">
+              <li>
+                Developed a responsive, visually appealing website with modern
+                web technologies and best UX practices.
+              </li>
+              <li>
+                Implemented property listings, admin dashboard, search, and
+                inquiry flows with fast performance and SEO optimization.
+              </li>
+              <li>
+                Collaborated with stakeholders to align UX, branding, and
+                business requirements.
+              </li>
+              <li>
+                Maintained and enhanced the platform with new features, bug
+                fixes, and performance improvements.
+              </li>
+            </ul>
+            <p class="mt-2 text-[0.7rem] text-slate-400">
+              Yet to be hosted at the time of writing.
+            </p>
+          </div>
+        </article>
+
+        <!-- Villanova CAD -->
+        <article
+          class="rounded-2xl border border-sky-400/30 bg-slate-900/80 p-4 sm:p-5"
+        >
+          <div class="space-y-1">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="text-sm font-semibold">CAD Expert</h3>
+              <p class="text-[0.7rem] text-sky-200">
+                Villanova Realty • 11/2025
+              </p>
+            </div>
+            <p class="text-xs text-slate-200">
+              Produced a complete 3D CAD model of the Villanova office floor,
+              enabling stakeholders to experience the space before build‑out.
+            </p>
+            <ul class="mt-2 space-y-1.5 text-xs text-slate-200">
+              <li>
+                Designed detailed layouts for workstations, offices, meeting
+                rooms, reception, lounges, and collaboration zones.
+              </li>
+              <li>
+                Modeled all furnishings and fixtures with ergonomic and
+                practical design principles.
+              </li>
+              <li>
+                Generated photorealistic renders and walkthroughs for design
+                reviews and approvals.
+              </li>
+              <li>
+                Delivered precise Fusion 360 models, assemblies, and drawings
+                for construction and interior work.
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- CIC -->
+        <article
+          class="rounded-2xl border border-fuchsia-400/30 bg-slate-900/80 p-4 sm:p-5"
+        >
+          <div class="space-y-1">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="text-sm font-semibold">Mechanical Design Engineer</h3>
+              <p class="text-[0.7rem] text-fuchsia-200">
+                CIC • 05/2024 – 12/2024 • Abia, Nigeria
+              </p>
+            </div>
+            <p class="text-xs text-slate-200">
+              Designed mechanical systems and assemblies using Autodesk Fusion
+              360 with simulation‑backed validation.
+            </p>
+            <ul class="mt-2 space-y-1.5 text-xs text-slate-200">
+              <li>
+                Developed 3D models, technical drawings, and prototypes ready
+                for manufacturing and 3D printing.
+              </li>
+              <li>
+                Performed motion, stress, strength, and load analyses to ensure
+                structural integrity.
+              </li>
+              <li>
+                Collaborated with cross‑functional teams to refine and optimize
+                assemblies.
+              </li>
+              <li>
+                Applied mechanical design principles to enhance efficiency and
+                reliability.
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <!-- Education & Certificates -->
+      <aside class="space-y-5">
+        <div
+          class="rounded-2xl border border-white/15 bg-slate-900/80 p-4 sm:p-5"
+        >
+          <h3 class="text-sm font-semibold text-slate-100">Education</h3>
+          <p class="mt-2 text-xs text-slate-200">
+            Bachelors of Mechatronics Engineering,
+            <span class="font-medium">Alex Ekwueme Federal University Ndufu‑Alike (AE‑FUNAI)</span>
+          </p>
+          <p class="mt-1 text-[0.75rem] text-slate-400">
+            01/2020 – 08/2025
+          </p>
+        </div>
+
+        <div
+          class="rounded-2xl border border-primary-400/20 bg-slate-900/80 p-4 sm:p-5"
+        >
+          <h3 class="text-sm font-semibold text-slate-100">
+            Selected Certifications
+          </h3>
+          <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+            <li>DevSecOps Mastery with Docker and Kubernetes — Udemy</li>
+            <li>Generative AI — Udacity</li>
+            <li>API Security for Connected Cars and Fleets — APISEC</li>
+            <li>API Security — APISEC</li>
+            <li>Autodesk Fusion Designathon 2025 — Participation</li>
+            <li>Engineering for Industry Academy — Autodesk (CIC)</li>
+            <li>Introduction to CyberSecurity — Cisco</li>
+          </ul>
+        </div>
+
+        <div
+          class="hidden md:block rounded-2xl border border-white/15 bg-slate-900/80 p-4 sm:p-5"
+        >
+          <h3 class="text-sm font-semibold text-slate-100">
+            Snapshot: In the lab
+          </h3>
+          <div
+            class="mt-3 overflow-hidden rounded-xl border border-white/10 bg-slate-800/60"
+          >
+            <img
+              src="{{ url_for('static', filename='images/portrait-2.png') }}"
+              alt="Ebube working at a laptop"
+              class="h-40 w-full object-cover"
+            />
+          </div>
+          <p class="mt-2 text-[0.7rem] text-slate-400">
+            Bridging engineering, software, and security to build production‑
+            grade systems.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Projects / Highlight -->
+<section
+  id="projects"
+  class="border-b border-white/5 bg-slate-900/80 py-14 sm:py-16"
+>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+      <div class="flex-1">
+        <h2
+          class="text-sm font-semibold uppercase tracking-[0.25em] text-primary-200"
+        >
+          Featured Work
+        </h2>
+        <h3 class="mt-1 text-xl font-semibold sm:text-2xl">
+          A small sample of the systems I’ve built.
+        </h3>
+      </div>
+      <p class="flex-1 text-xs text-slate-300">
+        These highlight the breadth of my work—from secure SaaS platforms to
+        office‑scale CAD models. More code samples and technical deep dives are
+        available on request.
+      </p>
+    </div>
+
+    <div class="mt-8 grid gap-5 md:grid-cols-2">
+      <!-- Villanova SaaS -->
+      <article
+        class="group relative overflow-hidden rounded-2xl border border-primary-400/30 bg-gradient-to-br from-slate-900 via-slate-950 to-primary-950/50 p-4 sm:p-5"
+      >
+        <div
+          class="pointer-events-none absolute -right-24 top-[-4rem] h-48 w-48 rounded-full bg-primary-500/30 blur-3xl transition-transform duration-500 group-hover:translate-y-4"
+        ></div>
+        <div class="relative space-y-2">
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="text-sm font-semibold text-primary-100">
+              Villanova Realty Platform
+            </h3>
+            <span
+              class="rounded-full bg-primary-500/20 px-2 py-0.5 text-[0.65rem] font-medium text-primary-100"
+              >SaaS Web App</span
+            >
+          </div>
+          <p class="text-xs text-slate-200">
+            Full‑stack real‑estate platform with responsive UI, property
+            listings, admin tools, and inquiry management.
+          </p>
+          <ul class="mt-2 flex flex-wrap gap-2 text-[0.7rem] text-primary-100">
+            <li
+              class="rounded-full bg-slate-900/80 px-2 py-0.5 ring-1 ring-primary-400/40"
+            >
+              Flask / REST
+            </li>
+            <li
+              class="rounded-full bg-slate-900/80 px-2 py-0.5 ring-1 ring-primary-400/40"
+            >
+              Tailwind / Responsive UI
+            </li>
+            <li
+              class="rounded-full bg-slate-900/80 px-2 py-0.5 ring-1 ring-primary-400/40"
+            >
+              SEO & Performance
+            </li>
+          </ul>
+          <p class="mt-2 text-[0.7rem] text-slate-400">
+            Status: built and undergoing internal review (hosting in progress).
+          </p>
+        </div>
+      </article>
+
+      <!-- Villanova CAD -->
+      <article
+        class="group relative overflow-hidden rounded-2xl border border-sky-400/30 bg-gradient-to-br from-slate-900 via-slate-950 to-sky-950/40 p-4 sm:p-5"
+      >
+        <div
+          class="pointer-events-none absolute -left-20 top-[-4rem] h-48 w-48 rounded-full bg-sky-500/25 blur-3xl transition-transform duration-500 group-hover:-translate-y-4"
+        ></div>
+        <div class="relative space-y-2">
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="text-sm font-semibold text-sky-100">
+              Villanova Office CAD Suite
+            </h3>
+            <span
+              class="rounded-full bg-sky-500/20 px-2 py-0.5 text-[0.65rem] font-medium text-sky-100"
+              >3D CAD</span
+            >
+          </div>
+          <p class="text-xs text-slate-200">
+            High‑fidelity 3D model of the entire office floor—workstations,
+            executive spaces, lounges, and functional zones.
+          </p>
+          <ul class="mt-2 flex flex-wrap gap-2 text-[0.7rem] text-sky-100">
+            <li
+              class="rounded-full bg-slate-900/80 px-2 py-0.5 ring-1 ring-sky-400/40"
+            >
+              Autodesk Fusion 360
+            </li>
+            <li
+              class="rounded-full bg-slate-900/80 px-2 py-0.5 ring-1 ring-sky-400/40"
+            >
+              Photorealistic Renders
+            </li>
+            <li
+              class="rounded-full bg-slate-900/80 px-2 py-0.5 ring-1 ring-sky-400/40"
+            >
+              Construction‑ready Drawings
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section
+  id="contact"
+  class="bg-slate-950/90 py-14 pb-20 sm:py-16 sm:pb-24"
+>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-8 lg:grid-cols-[1.2fr,1.4fr] lg:items-start">
+      <div class="space-y-4">
+        <h2
+          class="text-sm font-semibold uppercase tracking-[0.25em] text-primary-200"
+        >
+          Contact
+        </h2>
+        <h3 class="text-xl font-semibold sm:text-2xl">
+          Let’s discuss your next system, product, or platform.
+        </h3>
+        <p class="text-sm text-slate-200 sm:text-[0.95rem]">
+          Whether you’re building a secure SaaS product, an IoT‑enabled
+          solution, or you need expert CAD and design support, I can help you
+          deliver robust, production‑ready results.
+        </p>
+
+        <dl class="mt-4 space-y-2 text-xs text-slate-200">
+          <div>
+            <dt class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400">
+              Email
+            </dt>
+            <dd class="mt-0.5">
+              <a
+                href="mailto:jetsamjoseph@gmail.com"
+                class="font-medium hover:text-primary-200"
+                >jetsamjoseph@gmail.com</a
+              >
+            </dd>
+          </div>
+          <div>
+            <dt class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400">
+              Phone / WhatsApp
+            </dt>
+            <dd class="mt-0.5">+234 903 149 5094</dd>
+          </div>
+          <div>
+            <dt class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400">
+              Based in
+            </dt>
+            <dd class="mt-0.5">Lagos, Nigeria • Open to global roles</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div>
+        <form
+          action="{{ url_for('contact') }}"
+          method="post"
+          class="space-y-4 rounded-2xl border border-white/15 bg-slate-900/90 p-4 shadow-[0_20px_50px_rgba(15,23,42,0.9)] sm:p-6"
+        >
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label
+                for="name"
+                class="block text-xs font-medium text-slate-200"
+                >Name *</label
+              >
+              <input
+                type="text"
+                name="name"
+                id="name"
+                required
+                class="mt-1 block w-full rounded-xl border border-slate-600 bg-slate-900/80 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-primary-400 focus:outline-none focus:ring-1 focus:ring-primary-400"
+                placeholder="Your full name"
+              />
+            </div>
+            <div>
+              <label
+                for="email"
+                class="block text-xs font-medium text-slate-200"
+                >Email *</label
+              >
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                class="mt-1 block w-full rounded-xl border border-slate-600 bg-slate-900/80 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-primary-400 focus:outline-none focus:ring-1 focus:ring-primary-400"
+                placeholder="you@email.com"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label
+              for="subject"
+              class="block text-xs font-medium text-slate-200"
+              >Subject</label
+            >
+            <input
+              type="text"
+              name="subject"
+              id="subject"
+              class="mt-1 block w-full rounded-xl border border-slate-600 bg-slate-900/80 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-primary-400 focus:outline-none focus:ring-1 focus:ring-primary-400"
+              placeholder="Project idea, collaboration, consultation..."
+            />
+          </div>
+
+          <div>
+            <label
+              for="message"
+              class="block text-xs font-medium text-slate-200"
+              >Message *</label
+            >
+            <textarea
+              name="message"
+              id="message"
+              rows="4"
+              required
+              class="mt-1 block w-full rounded-xl border border-slate-600 bg-slate-900/80 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-primary-400 focus:outline-none focus:ring-1 focus:ring-primary-400"
+              placeholder="Share a bit about what you’re building and how I can help."
+            ></textarea>
+          </div>
+
+          <div class="flex items-center justify-between gap-3">
+            <p class="text-[0.7rem] text-slate-400">
+              I typically respond within
+              <span class="font-medium text-slate-200">24–48 hours</span>.
+            </p>
+            <button
+              type="submit"
+              class="inline-flex items-center justify-center rounded-full bg-primary-500 px-5 py-2 text-sm font-medium text-slate-950 shadow-lg shadow-primary-500/40 hover:bg-primary-400"
+            >
+              Send message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+

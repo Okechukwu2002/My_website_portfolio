@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard • Contact Messages{% endblock %}
+
+{% block content %}
+<section class="py-8 sm:py-10">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <h1 class="text-lg font-semibold text-slate-100 sm:text-xl">
+          Admin Dashboard
+        </h1>
+        <p class="mt-1 text-xs text-slate-400">
+          Manage and review contact messages sent through your portfolio site.
+        </p>
+      </div>
+      <div class="flex items-center gap-3 text-xs">
+        <span
+          class="inline-flex items-center rounded-full bg-slate-900/80 px-3 py-1 text-[0.7rem] text-slate-200 ring-1 ring-slate-700"
+        >
+          Unread:
+          <span class="ml-1.5 rounded-full bg-emerald-500/20 px-2 py-0.5">{{
+            unread_count
+          }}</span>
+        </span>
+        <a
+          href="{{ url_for('admin_logout') }}"
+          class="inline-flex items-center rounded-full bg-slate-800 px-3 py-1.5 text-[0.7rem] font-medium text-slate-100 ring-1 ring-slate-600 hover:bg-slate-700"
+        >
+          Log out
+        </a>
+      </div>
+    </div>
+
+    <div
+      class="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/80"
+    >
+      <div
+        class="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3 text-xs text-slate-300"
+      >
+        <p class="font-medium">Inbox</p>
+        <p class="text-[0.7rem] text-slate-400">
+          Showing {{ messages|length }} message{{ messages|length != 1 and "s"
+          or "" }}
+        </p>
+      </div>
+
+      <div class="max-h-[480px] divide-y divide-white/5 overflow-y-auto text-xs">
+        {% if messages %}
+        {% for msg in messages %}
+        <div
+          class="flex flex-col gap-2 px-4 py-3 hover:bg-slate-800/60 sm:flex-row sm:items-start sm:gap-4"
+        >
+          <div class="flex-1 space-y-1.5">
+            <div class="flex flex-wrap items-center gap-2">
+              <span
+                class="inline-flex h-6 items-center rounded-full bg-slate-800 px-2.5 text-[0.7rem] font-medium text-slate-100"
+              >
+                {{ msg.name }}
+              </span>
+              <a
+                href="mailto:{{ msg.email }}"
+                class="text-[0.7rem] text-slate-300 hover:text-primary-200"
+              >
+                {{ msg.email }}
+              </a>
+              {% if msg.subject %}
+              <span
+                class="inline-flex max-w-xs items-center truncate rounded-full bg-slate-800 px-2 py-0.5 text-[0.65rem] text-slate-200"
+                title="{{ msg.subject }}"
+              >
+                {{ msg.subject }}
+              </span>
+              {% endif %}
+            </div>
+            <p class="whitespace-pre-line text-[0.75rem] text-slate-100">
+              {{ msg.message }}
+            </p>
+          </div>
+
+          <div class="flex w-full flex-row items-end justify-between gap-2 sm:w-52 sm:flex-col sm:items-end">
+            <div class="text-right text-[0.65rem] text-slate-400">
+              <p>
+                {{ msg.created_at.strftime("%d %b %Y • %H:%M") if msg.created_at
+                }}
+              </p>
+              <p class="mt-0.5">
+                Status:
+                <span
+                  class="font-medium {% if msg.is_read %}text-emerald-300{% else %}text-amber-300{% endif %}"
+                >
+                  {{ "Read" if msg.is_read else "Unread" }}
+                </span>
+              </p>
+            </div>
+
+            <form
+              method="post"
+              action="{{ url_for('toggle_message_read', message_id=msg.id) }}"
+            >
+              <button
+                type="submit"
+                class="inline-flex items-center rounded-full bg-slate-800 px-3 py-1.5 text-[0.7rem] font-medium text-slate-100 ring-1 ring-slate-600 hover:bg-slate-700"
+              >
+                {% if msg.is_read %} Mark as unread {% else %} Mark as read {%
+                endif %}
+              </button>
+            </form>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p class="px-4 py-8 text-center text-[0.8rem] text-slate-400">
+          No messages yet. Once someone submits the contact form, it will
+          appear here.
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+

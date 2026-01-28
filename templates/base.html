@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Ebube Okechukwu - Portfolio{% endblock %}</title>
+    <meta
+      name="description"
+      content="Portfolio of Ebube Okechukwu - Mechatronics Engineer, Cybersecurity Professional, and Software Developer based in Lagos, Nigeria."
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+      // Tailwind color customization
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#ecfeff",
+                100: "#cffafe",
+                200: "#a5f3fc",
+                300: "#67e8f9",
+                400: "#22d3ee",
+                500: "#06b6d4",
+                600: "#0891b2",
+                700: "#0e7490",
+                800: "#155e75",
+                900: "#164e63",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Smooth theme transition */
+      .theme-transition {
+        transition: background-color 200ms ease, color 200ms ease,
+          border-color 200ms ease, fill 200ms ease, stroke 200ms ease;
+      }
+    </style>
+  </head>
+
+  <body
+    class="theme-transition bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100"
+  >
+    <div
+      class="min-h-screen flex flex-col bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.15),_transparent_60%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.85),_rgba(15,23,42,1))] dark:bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.3),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(15,23,42,1),_rgba(15,23,42,1))]"
+    >
+      <!-- Navigation -->
+      <header
+        class="sticky top-0 z-40 backdrop-blur border-b border-white/10 bg-slate-900/60 dark:bg-slate-950/70"
+      >
+        <nav
+          class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
+        >
+          <a href="{{ url_for('index') }}" class="flex items-center gap-2">
+            <div
+              class="flex h-9 w-9 items-center justify-center rounded-2xl bg-primary-500/10 ring-1 ring-primary-400/40"
+            >
+              <span class="text-lg font-semibold text-primary-300">E</span>
+            </div>
+            <div class="hidden sm:block">
+              <p class="text-sm font-semibold tracking-tight">
+                Ebube Okechukwu
+              </p>
+              <p class="text-[0.7rem] text-slate-300">
+                Mechatronics • Cybersecurity • Software
+              </p>
+            </div>
+          </a>
+          <div class="flex items-center gap-4">
+            <div class="hidden md:flex items-center gap-6 text-sm">
+              <a href="#about" class="hover:text-primary-300">About</a>
+              <a href="#skills" class="hover:text-primary-300">Skills</a>
+              <a href="#experience" class="hover:text-primary-300">Experience</a>
+              <a href="#projects" class="hover:text-primary-300">Projects</a>
+              <a href="#contact" class="hover:text-primary-300">Contact</a>
+            </div>
+            <button
+              id="theme-toggle"
+              type="button"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-slate-900/60 text-slate-200 shadow-sm hover:border-primary-400/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400"
+              aria-label="Toggle dark mode"
+            >
+              <span id="icon-sun" class="hidden">
+                <!-- Sun icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  class="h-4 w-4"
+                >
+                  <circle cx="12" cy="12" r="4" />
+                  <path
+                    d="M12 2v2m0 16v2m10-10h-2M4 12H2m2.93-7.07L6.34 6.34m11.32 11.32 1.41 1.41M6.34 17.66 4.93 19.07m14.14-14.14-1.41 1.41"
+                  />
+                </svg>
+              </span>
+              <span id="icon-moon" class="hidden">
+                <!-- Moon icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  class="h-4 w-4"
+                >
+                  <path
+                    d="M21 12.79A9 9 0 0 1 12.21 3 7 7 0 0 0 12 17a7 7 0 0 0 9-4.21Z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <a
+              href="#contact"
+              class="hidden sm:inline-flex items-center rounded-full border border-primary-400/60 bg-primary-500/20 px-4 py-1.5 text-xs font-medium text-primary-50 shadow-sm hover:bg-primary-500/30"
+            >
+              Let’s Collaborate
+            </a>
+          </div>
+        </nav>
+      </header>
+
+      <main class="flex-1">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="mx-auto mt-4 max-w-2xl px-4 sm:px-6 lg:px-8">
+          <div class="space-y-3">
+            {% for category, message in messages %}
+            <div
+              class="flex items-start gap-3 rounded-xl border px-4 py-3 text-sm
+              {% if category == 'success' %}border-emerald-400/40 bg-emerald-500/10 text-emerald-50
+              {% elif category == 'error' %}border-rose-400/40 bg-rose-500/10 text-rose-50
+              {% else %}border-slate-400/40 bg-slate-700/20 text-slate-50{% endif %}"
+            >
+              <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-current"></span>
+              <p>{{ message }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+      </main>
+
+      <footer class="border-t border-white/10 bg-slate-900/60">
+        <div
+          class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-6 text-xs text-slate-300 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8"
+        >
+          <p>
+            © {{ now().year if now is defined else 2026 }} Ebube Okechukwu. All
+            rights reserved.
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a
+              href="mailto:jetsamjoseph@gmail.com"
+              class="hover:text-primary-300"
+              >jetsamjoseph@gmail.com</a
+            >
+            <span>•</span>
+            <span>Lagos, Nigeria</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Theme handling
+      const storageKey = "ebube-theme";
+      const themeToggle = document.getElementById("theme-toggle");
+      const sunIcon = document.getElementById("icon-sun");
+      const moonIcon = document.getElementById("icon-moon");
+
+      function applyTheme(theme) {
+        const root = document.documentElement;
+        if (theme === "dark") {
+          root.classList.add("dark");
+          sunIcon.classList.remove("hidden");
+          moonIcon.classList.add("hidden");
+        } else {
+          root.classList.remove("dark");
+          sunIcon.classList.add("hidden");
+          moonIcon.classList.remove("hidden");
+        }
+      }
+
+      function getPreferredTheme() {
+        if (window.localStorage.getItem(storageKey)) {
+          return window.localStorage.getItem(storageKey);
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
+
+      applyTheme(getPreferredTheme());
+
+      themeToggle?.addEventListener("click", () => {
+        const nextTheme = document.documentElement.classList.contains("dark")
+          ? "light"
+          : "dark";
+        window.localStorage.setItem(storageKey, nextTheme);
+        applyTheme(nextTheme);
+      });
+    </script>
+
+    {% block scripts %}{% endblock %}
+  </body>
+</html>
+
