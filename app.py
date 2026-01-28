@@ -10,9 +10,49 @@ from flask import (
     session,
 )
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import text, inspect
 
 
 db = SQLAlchemy()
+
+
+class ContactMessage(db.Model):
+    __tablename__ = "contact_messages"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    phone = db.Column(db.String(20), nullable=False)
+    subject = db.Column(db.String(200), nullable=True)
+    message = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    is_read = db.Column(db.Boolean, default=False)
+
+
+ADMIN_PASSWORD = "2020/EN/12566"
+
+
+def migrate_database():
+    """Add phone column to existing database if it doesn't exist."""
+    try:
+        inspector = inspect(db.engine)
+        # Check if table exists
+        if "contact_messages" not in inspector.get_table_names():
+            return  # Table doesn't exist yet, db.create_all() will create it with phone column
+        
+        columns = [col["name"] for col in inspector.get_columns("contact_messages")]
+        
+        if "phone" not in columns:
+            # Add phone column
+            with db.engine.connect() as conn:
+                conn.execute(text("ALTER TABLE contact_messages ADD COLUMN phone VARCHAR(20) DEFAULT 'Not provided'"))
+                # Update existing rows to have a placeholder value
+                conn.execute(text("UPDATE contact_messages SET phone = 'Not provided' WHERE phone IS NULL OR phone = ''"))
+                conn.commit()
+                print("✓ Added 'phone' column to contact_messages table")
+    except Exception as e:
+        # Ignore errors - table might not exist or migration might have already run
+        pass
 
 
 def create_app():
@@ -26,28 +66,12 @@ def create_app():
     db.init_app(app)
 
     with app.app_context():
-        # Import models after db is initialized
-        from models import ContactMessage  # noqa: F401
-
         db.create_all()
+        # Run migration to add phone column if needed
+        migrate_database()
 
     register_routes(app)
     return app
-
-
-class ContactMessage(db.Model):
-    __tablename__ = "contact_messages"
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), nullable=False)
-    email = db.Column(db.String(120), nullable=False)
-    subject = db.Column(db.String(200), nullable=True)
-    message = db.Column(db.Text, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    is_read = db.Column(db.Boolean, default=False)
-
-
-ADMIN_PASSWORD = "2020/EN/12566"
 
 
 def is_admin_authenticated():
@@ -63,15 +87,16 @@ def register_routes(app: Flask):
     def contact():
         name = request.form.get("name", "").strip()
         email = request.form.get("email", "").strip()
+        phone = request.form.get("phone", "").strip()
         subject = request.form.get("subject", "").strip()
         message = request.form.get("message", "").strip()
 
-        if not name or not email or not message:
-            flash("Please fill in your name, email, and message.", "error")
+        if not name or not email or not phone or not message:
+            flash("Please fill in your name, email, phone number, and message.", "error")
             return redirect(url_for("index") + "#contact")
 
         contact_message = ContactMessage(
-            name=name, email=email, subject=subject, message=message
+            name=name, email=email, phone=phone, subject=subject, message=message
         )
         db.session.add(contact_message)
         db.session.commit()

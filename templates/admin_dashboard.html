@@ -60,9 +60,15 @@
               </span>
               <a
                 href="mailto:{{ msg.email }}"
-                class="text-[0.7rem] text-slate-300 hover:text-primary-200"
+                class="text-[0.7rem] text-slate-300 hover:text-primary-200 transition-colors"
               >
                 {{ msg.email }}
+              </a>
+              <a
+                href="tel:{{ msg.phone }}"
+                class="text-[0.7rem] text-slate-300 hover:text-primary-200 transition-colors"
+              >
+                {{ msg.phone }}
               </a>
               {% if msg.subject %}
               <span
