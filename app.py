@@ -162,6 +162,9 @@ def register_routes(app: Flask):
 # Create application instance for Gunicorn
 application = create_app()
 
+# Alias for compatibility (allows both app:app and app:application)
+app = application
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     debug = os.environ.get("FLASK_ENV") != "production"
