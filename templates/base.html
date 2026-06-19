@@ -175,6 +175,201 @@
         box-shadow: 0 0 30px rgba(34, 211, 238, 0.3);
         border-color: rgba(34, 211, 238, 0.5);
       }
+
+      /* Certificate gallery */
+      @keyframes certModalIn {
+        from {
+          opacity: 0;
+          transform: scale(0.94) translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      @keyframes certBackdropIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      .cert-card {
+        position: relative;
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.4s ease, border-color 0.4s ease;
+      }
+
+      .cert-card:hover {
+        transform: translateY(-6px);
+      }
+
+      .cert-card .cert-preview {
+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .cert-card:hover .cert-preview {
+        transform: scale(1.04);
+      }
+
+      .cert-card .cert-overlay {
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+
+      .cert-card:hover .cert-overlay {
+        opacity: 1;
+      }
+
+      .cert-filter-btn.active {
+        background: rgba(6, 182, 212, 0.25);
+        border-color: rgba(34, 211, 238, 0.6);
+        color: #cffafe;
+        box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+      }
+
+      .cert-modal-open {
+        animation: certModalIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+
+      .cert-backdrop-open {
+        animation: certBackdropIn 0.3s ease forwards;
+      }
+
+      .cert-card.hidden-by-filter {
+        display: none;
+      }
+
+      .cert-featured-glow {
+        box-shadow: 0 0 60px rgba(52, 211, 153, 0.15),
+          0 25px 50px rgba(15, 23, 42, 0.5);
+        position: relative;
+      }
+
+      .cert-featured-glow::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(
+          135deg,
+          rgba(52, 211, 153, 0.6),
+          rgba(34, 211, 238, 0.3),
+          rgba(52, 211, 153, 0.6)
+        );
+        background-size: 200% 200%;
+        animation: certBorderShift 4s ease infinite;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      @keyframes certBorderShift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+
+      .cert-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        opacity: 0;
+        background: linear-gradient(
+          105deg,
+          transparent 40%,
+          rgba(255, 255, 255, 0.06) 50%,
+          transparent 60%
+        );
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+      }
+
+      .cert-card:hover::after {
+        opacity: 1;
+      }
+
+      @keyframes certMarquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+
+      .cert-marquee-track {
+        display: flex;
+        width: max-content;
+        animation: certMarquee 28s linear infinite;
+      }
+
+      .cert-marquee-track:hover {
+        animation-play-state: paused;
+      }
+
+      .cert-filter-empty {
+        animation: fadeInUp 0.5s ease forwards;
+      }
+
+      @media (hover: none) {
+        .cert-card .cert-overlay {
+          opacity: 0.85;
+          background: linear-gradient(
+            to top,
+            rgba(15, 23, 42, 0.92) 0%,
+            rgba(15, 23, 42, 0.4) 50%,
+            transparent 100%
+          );
+        }
+
+        .cert-card .cert-overlay svg {
+          display: none;
+        }
+
+        .cert-card .cert-overlay span {
+          position: absolute;
+          bottom: 0.75rem;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 0.65rem;
+          padding: 0.35rem 0.75rem;
+          border-radius: 9999px;
+          background: rgba(6, 182, 212, 0.9);
+          color: #0f172a;
+        }
+      }
+
+      #cert-modal-image {
+        cursor: zoom-in;
+        transition: transform 0.3s ease;
+      }
+
+      #cert-modal-image.cert-zoomed {
+        cursor: zoom-out;
+        transform: scale(1.75);
+        transform-origin: center center;
+      }
+
+      .cert-modal-image-wrap {
+        overflow: auto;
+        max-height: 55vh;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .cert-modal-image-wrap.cert-zoomed-wrap {
+        max-height: 65vh;
+      }
+
+      .mobile-nav-scroll {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .mobile-nav-scroll::-webkit-scrollbar {
+        display: none;
+      }
     </style>
   </head>
 
@@ -211,6 +406,7 @@
               <a href="#about" class="hover:text-primary-300">About</a>
               <a href="#skills" class="hover:text-primary-300">Skills</a>
               <a href="#experience" class="hover:text-primary-300">Experience</a>
+              <a href="#certifications" class="hover:text-primary-300">Credentials</a>
               <a href="#projects" class="hover:text-primary-300">Projects</a>
               <a href="#contact" class="hover:text-primary-300">Contact</a>
             </div>
@@ -260,6 +456,16 @@
             </a>
           </div>
         </nav>
+        <div
+          class="mobile-nav-scroll flex gap-4 overflow-x-auto border-t border-white/5 px-4 py-2 text-xs md:hidden"
+        >
+          <a href="#about" class="whitespace-nowrap text-slate-300 hover:text-primary-300">About</a>
+          <a href="#skills" class="whitespace-nowrap text-slate-300 hover:text-primary-300">Skills</a>
+          <a href="#experience" class="whitespace-nowrap text-slate-300 hover:text-primary-300">Experience</a>
+          <a href="#certifications" class="whitespace-nowrap font-semibold text-primary-300">Credentials</a>
+          <a href="#projects" class="whitespace-nowrap text-slate-300 hover:text-primary-300">Projects</a>
+          <a href="#contact" class="whitespace-nowrap text-slate-300 hover:text-primary-300">Contact</a>
+        </div>
       </header>
 
       <main class="flex-1">
