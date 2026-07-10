@@ -1,5 +1,7 @@
 import os
-from datetime import datetime
+from datetime import datetime, timezone
+from pathlib import Path
+from xml.sax.saxutils import escape
 
 from flask import (
     Flask,
@@ -32,6 +34,104 @@ class ContactMessage(db.Model):
 
 
 ADMIN_PASSWORD = "2020/EN/12566"
+
+STATIC_DIR = Path(__file__).resolve().parent / "static"
+
+SITEMAP_PAGES = [
+    {
+        "path": "/",
+        "changefreq": "weekly",
+        "priority": "1.0",
+    },
+]
+
+SITEMAP_IMAGES = [
+    {
+        "page": "/",
+        "loc": "images/ebube-okechukwu.png",
+        "title": "Ebube Okechukwu — Okechukwu Ebube, Mechatronics Engineer",
+        "caption": "Professional portrait of Ebube Okechukwu (Okechukwu Ebube), Mechatronics Engineer, Cybersecurity Professional, and Software Developer in Lagos, Nigeria.",
+    },
+    {
+        "page": "/",
+        "loc": "images/projects/kinetic-aegis/drone-payload-assembly.png",
+        "title": "Kinetic Aegis — Custom Drone Payload Assembly",
+        "caption": "Engineering work by Ebube Okechukwu at Kinetic Aegis: custom quadcopter with 3D-printed aerodynamic payload.",
+    },
+    {
+        "page": "/",
+        "loc": "images/projects/kinetic-aegis/drone-field-prototype.png",
+        "title": "Kinetic Aegis — Field Prototype",
+        "caption": "Field-tested drone prototype designed and built by Ebube Okechukwu at Kinetic Aegis.",
+    },
+    {
+        "page": "/",
+        "loc": "images/certificates/isc2-certified-cybersecurity.png",
+        "title": "ISC2 Certified in Cybersecurity — Ebube Okechukwu",
+        "caption": "ISC2 CC certification credential for Ebube Okechukwu (Okechukwu Ebube).",
+    },
+]
+
+
+def get_site_url():
+    site_url = os.environ.get("SITE_URL", "").strip().rstrip("/")
+    if site_url:
+        return site_url
+    from flask import request
+
+    return request.url_root.rstrip("/")
+
+
+def static_lastmod(relative_path: str) -> str:
+    file_path = STATIC_DIR / relative_path.replace("/", os.sep)
+    if file_path.is_file():
+        modified = datetime.fromtimestamp(file_path.stat().st_mtime, tz=timezone.utc)
+        return modified.strftime("%Y-%m-%d")
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+
+def build_sitemap_xml(site_url: str) -> str:
+    latest_dates = [static_lastmod(image["loc"]) for image in SITEMAP_IMAGES]
+    homepage_lastmod = max(latest_dates) if latest_dates else datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    url_blocks = []
+    for page in SITEMAP_PAGES:
+        page_path = page["path"]
+        loc = f"{site_url}{page_path}" if page_path != "/" else f"{site_url}/"
+        lastmod = homepage_lastmod if page_path == "/" else datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+        image_blocks = []
+        for image in SITEMAP_IMAGES:
+            if image["page"] != page_path:
+                continue
+            image_url = f"{site_url}/static/{image['loc']}"
+            image_blocks.append(
+                f"""    <image:image>
+      <image:loc>{escape(image_url)}</image:loc>
+      <image:title>{escape(image['title'])}</image:title>
+      <image:caption>{escape(image['caption'])}</image:caption>
+    </image:image>"""
+            )
+
+        images_xml = "\n".join(image_blocks)
+        images_section = f"\n{images_xml}" if images_xml else ""
+
+        url_blocks.append(
+            f"""  <url>
+    <loc>{escape(loc)}</loc>
+    <lastmod>{lastmod}</lastmod>
+    <changefreq>{page['changefreq']}</changefreq>
+    <priority>{page['priority']}</priority>{images_section}
+  </url>"""
+        )
+
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
+{chr(10).join(url_blocks)}
+</urlset>"""
 
 
 def migrate_database():
@@ -108,12 +208,13 @@ def register_routes(app: Flask):
     def robots_txt():
         from flask import Response
 
-        site_url = os.environ.get("SITE_URL", request.url_root.rstrip("/"))
+        site_url = get_site_url()
         content = (
             "User-agent: *\n"
             "Allow: /\n"
             "Disallow: /admin/\n"
-            "Disallow: /admin\n\n"
+            "Disallow: /admin\n"
+            "Disallow: /admin/login\n\n"
             f"Sitemap: {site_url}/sitemap.xml\n"
         )
         return Response(content, mimetype="text/plain")
@@ -122,18 +223,11 @@ def register_routes(app: Flask):
     def sitemap_xml():
         from flask import Response
 
-        site_url = os.environ.get("SITE_URL", request.url_root.rstrip("/"))
-        lastmod = datetime.utcnow().strftime("%Y-%m-%d")
-        xml = f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>{site_url}/</loc>
-    <lastmod>{lastmod}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-</urlset>"""
-        return Response(xml, mimetype="application/xml")
+        site_url = get_site_url()
+        xml = build_sitemap_xml(site_url)
+        response = Response(xml, mimetype="application/xml")
+        response.headers["Cache-Control"] = "public, max-age=3600"
+        return response
 
     @app.route("/health")
     def health():

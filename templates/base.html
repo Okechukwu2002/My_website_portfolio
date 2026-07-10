@@ -2,6 +2,7 @@
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="Gmsu7Ylu7mfmTyJ8etbrN2gSE8sKs7gKNsl-36uw11M" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% set page_url = (seo_site_url ~ request.path) if seo_site_url else request.url.split('?')[0] %}
     {% set image_url = (seo_site_url if seo_site_url else request.url_root.rstrip('/')) ~ url_for('static', filename='images/ebube-okechukwu.png') %}
@@ -15,6 +16,7 @@
     <meta name="googlebot" content="index, follow" />
     <meta name="keywords" content="Ebube Okechukwu, Okechukwu Ebube, Okechukwu Ebube Joseph, Ebube Okechukwu portfolio, Ebube Okechukwu engineer, Okechukwu Ebube cybersecurity, mechatronics engineer Nigeria, cybersecurity professional Lagos, software developer Nigeria, ISC2 certified, Primex360, Kinetic Aegis" />
     <link rel="canonical" href="{{ page_url }}" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ (seo_site_url if seo_site_url else request.url_root.rstrip('/')) }}/sitemap.xml" />
 
     <!-- Favicon & app icons (face portrait for Google search results) -->
     <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" sizes="any" />
