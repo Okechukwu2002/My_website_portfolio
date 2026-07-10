@@ -1,0 +1,30 @@
+{
+  "name": "Ebube Okechukwu | Okechukwu Ebube",
+  "short_name": "Ebube Okechukwu",
+  "description": "Official portfolio of Ebube Okechukwu (Okechukwu Ebube) — Mechatronics Engineer, Cybersecurity Professional & Software Developer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#06b6d4",
+  "lang": "en-NG",
+  "icons": [
+    {
+      "src": "/static/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/static/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/static/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

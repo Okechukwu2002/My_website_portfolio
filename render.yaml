@@ -9,4 +9,6 @@ services:
         value: 3.11.0
       - key: SECRET_KEY
         generateValue: true
+      - key: SITE_URL
+        sync: false
     healthCheckPath: /health

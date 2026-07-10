@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}Ebube Okechukwu • Mechatronics, Cybersecurity & Software{% endblock %}
+{% block title %}Ebube Okechukwu | Okechukwu Ebube — Mechatronics Engineer, Cybersecurity & Software Developer{% endblock %}
+
+{% block meta_description %}Official portfolio of Ebube Okechukwu (Okechukwu Ebube) — Mechatronics Engineer, Cybersecurity Professional, and Software Developer in Lagos, Nigeria. ISC2 CC certified. Experience at Primex360, Kinetic Aegis, BetChief, and more.{% endblock %}
 
 {% block content %}
 <section
@@ -34,16 +36,19 @@
           class="text-balance text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl leading-tight"
         >
           <span class="gradient-text">Ebube Okechukwu</span>
+          <span class="sr-only"> — also known as Okechukwu Ebube</span>
           <span class="text-primary-300">Mechatronics Engineer</span>, 
           <span class="text-primary-300">Cybersecurity Professional</span> & 
           <span class="text-primary-300">Software Developer</span>
         </h1>
         <p class="max-w-xl text-sm text-slate-200 sm:text-base leading-relaxed">
-          I design, secure, and develop intelligent systems bridging hardware, software, and security. 
-          Building <span class="font-semibold text-primary-200">IoT robotics</span>, 
-          <span class="font-semibold text-primary-200">enterprise SaaS platforms</span>, and 
-          <span class="font-semibold text-primary-200">secure cloud infrastructure</span>—delivering 
-          production-ready solutions for performance, reliability, and scale.
+          I design, secure, and develop intelligent systems bridging hardware, software, and security.
+          Currently at <span class="font-semibold text-violet-200">Primex360</span> and
+          <span class="font-semibold text-amber-200">Kinetic Aegis</span>—from
+          <span class="font-semibold text-primary-200">secure software</span> and
+          <span class="font-semibold text-primary-200">embedded robotics</span> to
+          <span class="font-semibold text-primary-200">mechanical design</span>—delivering
+          end-to-end solutions for performance, reliability, and scale.
         </p>
       </div>
 
@@ -98,9 +103,12 @@
             class="relative overflow-hidden rounded-xl border border-white/10"
           >
             <img
-              src="{{ url_for('static', filename='images/portrait-1.png') }}"
-              alt="Portrait of Ebube Okechukwu"
-              class="h-56 w-full object-cover sm:h-64 transition-transform hover:scale-105 duration-500"
+              src="{{ url_for('static', filename='images/ebube-okechukwu.png') }}"
+              alt="Ebube Okechukwu — also known as Okechukwu Ebube, Mechatronics Engineer and Cybersecurity Professional"
+              class="h-56 w-full object-cover object-top sm:h-64 transition-transform hover:scale-105 duration-500"
+              width="400"
+              height="512"
+              fetchpriority="high"
             />
           </div>
           <div class="mt-3 space-y-0.5 text-xs">
@@ -137,7 +145,7 @@
           Engineering meets security meets code—<span class="text-primary-300">that's my world</span>.
         </h3>
         <p class="text-sm text-slate-200 sm:text-base leading-relaxed">
-          I'm a Mechatronics Engineer and Python developer who's obsessed with building things that 
+          I'm <strong class="text-primary-100">Ebube Okechukwu</strong> (Okechukwu Ebube)—a Mechatronics Engineer and Python developer who's obsessed with building things that 
           <span class="font-semibold text-primary-200">actually work</span>. Whether it's designing 
           robotic systems, securing cloud platforms, or crafting beautiful web apps—I bring the same 
           attention to detail and passion for quality to everything I build.
@@ -331,17 +339,131 @@
       </div>
       <div class="flex-1 text-sm text-slate-300 leading-relaxed">
         <p>
-          I don't just build things—I ship them. From securing betting platforms handling millions 
-          of transactions to designing office spaces in 3D, here's where I've made a difference.
+          I don't just build things—I ship them. From secure software at Primex360 and engineering
+          at Kinetic Aegis to protecting high-stakes platforms and designing in 3D—here's
+          where I've made a difference.
         </p>
       </div>
     </div>
 
     <div class="mt-10 grid gap-6 lg:grid-cols-[1.5fr,1fr]">
       <div class="space-y-5">
+        <!-- Kinetic Aegis -->
+        <article
+          id="kinetic-aegis"
+          class="relative overflow-hidden rounded-2xl border border-amber-400/35 bg-gradient-to-br from-slate-900 via-amber-950/25 to-slate-950 p-5 sm:p-6 hover-lift kinetic-featured-glow scroll-reveal"
+        >
+          <div
+            class="pointer-events-none absolute -left-16 top-[-3rem] h-44 w-44 rounded-full bg-amber-500/20 blur-3xl animate-pulse-glow"
+          ></div>
+          <div
+            class="pointer-events-none absolute -right-10 bottom-[-2rem] h-36 w-36 rounded-full bg-cyan-500/15 blur-3xl"
+          ></div>
+          <div class="relative space-y-3">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-amber-500/25 px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-amber-100 ring-1 ring-amber-400/40">Current Role</span>
+              <span class="rounded-full bg-slate-800/80 px-2.5 py-0.5 text-[0.65rem] font-medium text-slate-300">Embedded · Software · Mechanical</span>
+            </div>
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="text-base font-bold text-amber-50 sm:text-lg">Embedded Systems Engineer · Software Developer · Mechanical Designer</h3>
+              <p class="text-[0.7rem] text-amber-200/90 font-medium">
+                Kinetic Aegis • Jun 2026 – Present
+              </p>
+            </div>
+            <p class="text-sm text-slate-200 leading-relaxed">
+              At Kinetic Aegis, I work across mechanical design, embedded systems, and software
+              development—taking intelligent systems from concept sketches through 3D-modeled
+              prototypes to field-tested hardware. I also developed the company's website.
+            </p>
+            <ul class="mt-2 space-y-2 text-xs text-slate-200 leading-relaxed">
+              <li class="flex items-start gap-2">
+                <span class="text-amber-400 mt-1">▸</span>
+                <span>Designed and prototyped custom drone payload systems with 3D-printed aerodynamic assemblies</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-amber-400 mt-1">▸</span>
+                <span>Integrated flight hardware, power systems, mounting brackets, and embedded electronics end-to-end</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-amber-400 mt-1">▸</span>
+                <span>Modeled mechanical components in Fusion 360 for 3D printing, assembly, and field validation</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-amber-400 mt-1">▸</span>
+                <span>Developed the Kinetic Aegis website—responsive UI, clean UX, and full-stack implementation</span>
+              </li>
+            </ul>
+            <div class="flex flex-wrap items-center gap-3 pt-1">
+              <a
+                href="#kinetic-aegis-project"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-200 hover:text-amber-100 transition-colors group"
+              >
+                View project showcase
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Primex360 -->
+        <article
+          id="primex360"
+          class="relative overflow-hidden rounded-2xl border border-violet-400/35 bg-gradient-to-br from-slate-900 via-violet-950/30 to-slate-950 p-5 sm:p-6 hover-lift card-glow scroll-reveal"
+          style="animation-delay: 0.05s;"
+        >
+          <div
+            class="pointer-events-none absolute -right-14 top-[-2.5rem] h-40 w-40 rounded-full bg-violet-500/25 blur-3xl animate-pulse-glow"
+          ></div>
+          <div
+            class="pointer-events-none absolute -left-10 bottom-[-1.5rem] h-32 w-32 rounded-full bg-fuchsia-500/15 blur-3xl"
+          ></div>
+          <div class="relative space-y-3">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-violet-500/25 px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-violet-100 ring-1 ring-violet-400/40">Current Role</span>
+              <span class="rounded-full bg-slate-800/80 px-2.5 py-0.5 text-[0.65rem] font-medium text-slate-300">Software · Cybersecurity</span>
+            </div>
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="text-base font-bold text-violet-50 sm:text-lg">Software Developer · Cybersecurity Professional</h3>
+              <p class="text-[0.7rem] text-violet-200/90 font-medium">
+                Primex360 • Feb 2026 – Present
+              </p>
+            </div>
+            <p class="text-sm text-slate-200 leading-relaxed">
+              At Primex360, I ship production software without compromising security—building features
+              users rely on while hardening every layer attackers might probe. Code fast, defend
+              smarter—that's the dual mandate I live by here.
+            </p>
+            <ul class="mt-2 space-y-2 text-xs text-slate-200 leading-relaxed">
+              <li class="flex items-start gap-2">
+                <span class="text-violet-400 mt-1">▸</span>
+                <span>Developing and maintaining production web applications, APIs, and internal tools</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-violet-400 mt-1">▸</span>
+                <span>Embedding security into the SDLC—secure coding, reviews, and proactive threat mitigation</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-violet-400 mt-1">▸</span>
+                <span>Identifying and remediating vulnerabilities across applications and infrastructure</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-violet-400 mt-1">▸</span>
+                <span>Partnering with teams to architect solutions that scale securely under real-world load</span>
+              </li>
+            </ul>
+            <div class="flex flex-wrap gap-2 pt-1 text-[0.65rem]">
+              <span class="rounded-full bg-slate-900/80 px-2 py-0.5 font-medium text-violet-100 ring-1 ring-violet-400/30">Full-Stack Dev</span>
+              <span class="rounded-full bg-slate-900/80 px-2 py-0.5 font-medium text-fuchsia-100 ring-1 ring-fuchsia-400/30">AppSec</span>
+              <span class="rounded-full bg-slate-900/80 px-2 py-0.5 font-medium text-emerald-100 ring-1 ring-emerald-400/30">API Security</span>
+              <span class="rounded-full bg-slate-900/80 px-2 py-0.5 font-medium text-sky-100 ring-1 ring-sky-400/30">Secure SDLC</span>
+            </div>
+          </div>
+        </article>
+
         <!-- BetChief -->
         <article
           class="relative overflow-hidden rounded-2xl border border-emerald-400/30 bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-950/60 p-5 sm:p-6 hover-lift card-glow scroll-reveal"
+          style="animation-delay: 0.1s;"
         >
           <div
             class="pointer-events-none absolute -right-16 top-[-3rem] h-40 w-40 rounded-full bg-emerald-500/25 blur-3xl animate-pulse-glow"
@@ -544,9 +666,12 @@
             class="mt-3 overflow-hidden rounded-xl border border-white/10 bg-slate-800/60"
           >
             <img
-              src="{{ url_for('static', filename='images/portrait-2.png') }}"
-              alt="Ebube working at a laptop"
-              class="h-40 w-full object-cover transition-transform hover:scale-105 duration-500"
+              src="{{ url_for('static', filename='images/ebube-okechukwu.png') }}"
+              alt="Okechukwu Ebube (Ebube Okechukwu) working on engineering and software projects"
+              class="h-40 w-full object-cover object-top transition-transform hover:scale-105 duration-500"
+              loading="lazy"
+              width="400"
+              height="320"
             />
           </div>
           <p class="mt-3 text-[0.7rem] text-slate-400 leading-relaxed">
@@ -925,6 +1050,58 @@
   </div>
 </div>
 
+<!-- Project Image Lightbox -->
+<div
+  id="project-modal"
+  class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="project-modal-title"
+  aria-hidden="true"
+>
+  <div id="project-modal-backdrop" class="absolute inset-0 bg-slate-950/90 backdrop-blur-md cert-backdrop-open"></div>
+
+  <div class="cert-modal-open relative z-10 flex max-h-[95vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-amber-400/20 bg-slate-900 shadow-[0_25px_80px_rgba(0,0,0,0.6)]">
+    <div class="flex items-start justify-between gap-4 border-b border-white/10 px-5 py-4 sm:px-6">
+      <div class="min-w-0 flex-1">
+        <p class="text-[0.65rem] font-semibold uppercase tracking-wider text-amber-300">Kinetic Aegis</p>
+        <h3 id="project-modal-title" class="mt-0.5 text-base font-bold text-slate-50 sm:text-lg"></h3>
+        <p id="project-modal-caption" class="mt-1 text-xs text-slate-400 leading-relaxed"></p>
+      </div>
+      <button
+        type="button"
+        id="project-modal-close"
+        class="flex-shrink-0 rounded-full border border-white/15 bg-slate-800/80 p-2 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+        aria-label="Close image viewer"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto bg-slate-950/50">
+      <img id="project-modal-image" src="" alt="" class="w-full object-contain max-h-[70vh]"/>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 px-5 py-4 sm:px-6">
+      <div class="flex items-center gap-2">
+        <button type="button" id="project-modal-prev" class="inline-flex items-center gap-1 rounded-full border border-white/15 bg-slate-800/80 px-3 py-1.5 text-xs font-medium text-slate-200 hover:border-amber-400/40 hover:text-amber-200 transition-colors" aria-label="Previous image">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-3.5 w-3.5"><path d="m15 18-6-6 6-6"/></svg>
+          Prev
+        </button>
+        <button type="button" id="project-modal-next" class="inline-flex items-center gap-1 rounded-full border border-white/15 bg-slate-800/80 px-3 py-1.5 text-xs font-medium text-slate-200 hover:border-amber-400/40 hover:text-amber-200 transition-colors" aria-label="Next image">
+          Next
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-3.5 w-3.5"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <span id="project-modal-counter" class="text-[0.65rem] text-slate-500 ml-1"></span>
+      </div>
+      <a id="project-modal-open-tab" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-slate-800/80 px-4 py-1.5 text-xs font-semibold text-slate-200 hover:border-amber-400/40 hover:text-amber-200 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-3.5 w-3.5"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        Open Full Size
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- Projects / Highlight -->
 <section
   id="projects"
@@ -943,12 +1120,114 @@
         </h3>
       </div>
       <p class="flex-1 text-sm text-slate-300 leading-relaxed">
-        From secure SaaS platforms to photorealistic 3D models—here's a taste of 
-        what I've built. Want to see more? Let's talk.
+        From engineering at Kinetic Aegis and building aerial systems to secure SaaS platforms and
+        photorealistic 3D models—here's a taste of what I've built.
       </p>
     </div>
 
     <div class="mt-10 grid gap-6 md:grid-cols-2">
+      <!-- Kinetic Aegis -->
+      <article
+        id="kinetic-aegis-project"
+        class="kinetic-featured-glow group relative overflow-hidden rounded-2xl border border-amber-400/35 bg-gradient-to-br from-slate-900 via-slate-950 to-amber-950/30 md:col-span-2 scroll-reveal"
+      >
+        <div
+          class="pointer-events-none absolute -right-24 top-[-5rem] h-56 w-56 rounded-full bg-amber-500/20 blur-3xl transition-transform duration-700 group-hover:scale-110"
+        ></div>
+        <div
+          class="pointer-events-none absolute -left-16 bottom-[-4rem] h-48 w-48 rounded-full bg-cyan-500/15 blur-3xl"
+        ></div>
+
+        <div class="relative grid gap-6 p-5 sm:p-6 lg:grid-cols-[1.15fr,1fr] lg:items-center">
+          <div class="space-y-4">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-amber-500/25 px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-amber-100 ring-1 ring-amber-400/40">Featured Project</span>
+              <span class="rounded-full bg-cyan-500/15 px-2.5 py-0.5 text-[0.65rem] font-semibold text-cyan-100 ring-1 ring-cyan-400/30">Jun 2026 – Present</span>
+            </div>
+            <div class="flex flex-wrap items-start justify-between gap-3">
+              <h3 class="text-xl font-bold text-amber-50 sm:text-2xl">Kinetic Aegis</h3>
+              <span class="rounded-full bg-slate-900/80 px-2.5 py-1 text-[0.65rem] font-semibold text-amber-100 ring-1 ring-amber-400/30">
+                Robotics · Embedded · Web
+              </span>
+            </div>
+            <p class="text-sm text-slate-200 leading-relaxed">
+              Work at Kinetic Aegis spans mechanical design, embedded systems, and software
+              development. I developed the company website and engineered a custom quadcopter
+              payload platform—from CAD and 3D-printed prototypes through to live field tests.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-200 leading-relaxed">
+              <li class="flex items-start gap-2">
+                <span class="text-amber-400 mt-0.5">◆</span>
+                <span>Custom aerodynamic payload with 3D-printed nose cone, body, fins, and mounting bracket</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-cyan-400 mt-0.5">◆</span>
+                <span>Integrated quadcopter frame, power distribution, and secured battery housing</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-violet-400 mt-0.5">◆</span>
+                <span>Developed the Kinetic Aegis website—responsive design, clean UI, and production deployment</span>
+              </li>
+            </ul>
+            <div class="flex flex-wrap gap-2 pt-1 text-[0.7rem]">
+              <span class="rounded-full bg-slate-900/80 px-2.5 py-1 font-medium text-amber-100 ring-1 ring-amber-400/30">Fusion 360</span>
+              <span class="rounded-full bg-slate-900/80 px-2.5 py-1 font-medium text-cyan-100 ring-1 ring-cyan-400/30">3D Printing</span>
+              <span class="rounded-full bg-slate-900/80 px-2.5 py-1 font-medium text-violet-100 ring-1 ring-violet-400/30">Embedded Systems</span>
+              <span class="rounded-full bg-slate-900/80 px-2.5 py-1 font-medium text-emerald-100 ring-1 ring-emerald-400/30">Web Development</span>
+              <span class="rounded-full bg-slate-900/80 px-2.5 py-1 font-medium text-sky-100 ring-1 ring-sky-400/30">Mechanical Design</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <button
+              type="button"
+              class="project-shot group/shot relative col-span-2 overflow-hidden rounded-xl border border-white/10 bg-slate-950 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60"
+              data-project-open
+              data-index="0"
+              data-title="Kinetic Aegis — Payload Assembly"
+              data-caption="Custom quadcopter with 3D-printed aerodynamic payload, integrated power systems, and field-ready mounting hardware."
+              data-image="{{ url_for('static', filename='images/projects/kinetic-aegis/drone-payload-assembly.png') }}"
+            >
+              <img
+                src="{{ url_for('static', filename='images/projects/kinetic-aegis/drone-payload-assembly.png') }}"
+                alt="Kinetic Aegis custom drone payload assembly"
+                class="project-shot-img h-44 w-full object-cover sm:h-52"
+                loading="lazy"
+              />
+              <div class="project-shot-overlay absolute inset-0 flex items-center justify-center bg-slate-950/65 backdrop-blur-[2px]">
+                <span class="rounded-full bg-amber-500/90 px-3 py-1.5 text-[0.65rem] font-bold text-slate-950">View Full Image</span>
+              </div>
+            </button>
+            <button
+              type="button"
+              class="project-shot group/shot relative overflow-hidden rounded-xl border border-white/10 bg-slate-950 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60"
+              data-project-open
+              data-index="1"
+              data-title="Kinetic Aegis — Field Prototype"
+              data-caption="Hand-held field prototype validating mechanical fit, weight distribution, and embedded integration before flight testing."
+              data-image="{{ url_for('static', filename='images/projects/kinetic-aegis/drone-field-prototype.png') }}"
+            >
+              <img
+                src="{{ url_for('static', filename='images/projects/kinetic-aegis/drone-field-prototype.png') }}"
+                alt="Kinetic Aegis drone field prototype held for inspection"
+                class="project-shot-img h-36 w-full object-cover object-top sm:h-40"
+                loading="lazy"
+              />
+              <div class="project-shot-overlay absolute inset-0 flex items-center justify-center bg-slate-950/65 backdrop-blur-[2px]">
+                <span class="rounded-full bg-amber-500/90 px-3 py-1.5 text-[0.65rem] font-bold text-slate-950">Open</span>
+              </div>
+            </button>
+            <div class="flex flex-col justify-center rounded-xl border border-amber-400/20 bg-slate-900/60 p-4">
+              <p class="text-[0.65rem] font-semibold uppercase tracking-wider text-amber-300/80">My Roles</p>
+              <p class="mt-1 text-xs font-medium text-slate-200 leading-relaxed">
+                Embedded Systems Engineer · Software Developer · Mechanical Designer
+              </p>
+              <p class="mt-3 text-[0.65rem] text-slate-400">Kinetic Aegis · Since Jun 2026</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
       <!-- Villanova SaaS -->
       <article
         class="group relative overflow-hidden rounded-2xl border border-primary-400/30 bg-gradient-to-br from-slate-900 via-slate-950 to-primary-950/50 p-5 sm:p-6 hover-lift card-glow scroll-reveal"
@@ -1354,6 +1633,82 @@
         updateFilterEmpty(filter);
       });
     });
+
+    // Project image lightbox
+    const projectModal = document.getElementById("project-modal");
+    if (projectModal) {
+      const projectBackdrop = document.getElementById("project-modal-backdrop");
+      const projectClose = document.getElementById("project-modal-close");
+      const projectPrev = document.getElementById("project-modal-prev");
+      const projectNext = document.getElementById("project-modal-next");
+      const projectOpenTab = document.getElementById("project-modal-open-tab");
+      const projectCounter = document.getElementById("project-modal-counter");
+      const projectTitle = document.getElementById("project-modal-title");
+      const projectCaption = document.getElementById("project-modal-caption");
+      const projectImage = document.getElementById("project-modal-image");
+      const projectButtons = Array.from(document.querySelectorAll("[data-project-open]"));
+      let projectIndex = 0;
+      let projectLastFocused = null;
+
+      function getProjectData(btn) {
+        return {
+          title: btn.dataset.title,
+          caption: btn.dataset.caption,
+          image: btn.dataset.image,
+          index: parseInt(btn.dataset.index, 10),
+        };
+      }
+
+      function populateProjectModal(data) {
+        projectTitle.textContent = data.title;
+        projectCaption.textContent = data.caption;
+        projectImage.src = data.image;
+        projectImage.alt = data.title;
+        projectOpenTab.href = data.image;
+        projectCounter.textContent = (data.index + 1) + " / " + projectButtons.length;
+        projectIndex = data.index;
+      }
+
+      function openProjectModal(btn) {
+        projectLastFocused = document.activeElement;
+        populateProjectModal(getProjectData(btn));
+        projectModal.classList.remove("hidden");
+        projectModal.classList.add("flex");
+        projectModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        projectClose.focus();
+      }
+
+      function closeProjectModal() {
+        projectModal.classList.add("hidden");
+        projectModal.classList.remove("flex");
+        projectModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (projectLastFocused) projectLastFocused.focus();
+      }
+
+      function showProjectAtIndex(idx) {
+        const wrapped = ((idx % projectButtons.length) + projectButtons.length) % projectButtons.length;
+        const btn = projectButtons.find((b) => parseInt(b.dataset.index, 10) === wrapped);
+        if (btn) populateProjectModal(getProjectData(btn));
+      }
+
+      projectButtons.forEach((btn) => {
+        btn.addEventListener("click", () => openProjectModal(btn));
+      });
+
+      projectClose.addEventListener("click", closeProjectModal);
+      projectBackdrop.addEventListener("click", closeProjectModal);
+      projectPrev.addEventListener("click", () => showProjectAtIndex(projectIndex - 1));
+      projectNext.addEventListener("click", () => showProjectAtIndex(projectIndex + 1));
+
+      document.addEventListener("keydown", (e) => {
+        if (projectModal.classList.contains("hidden")) return;
+        if (e.key === "Escape") closeProjectModal();
+        if (e.key === "ArrowLeft") showProjectAtIndex(projectIndex - 1);
+        if (e.key === "ArrowRight") showProjectAtIndex(projectIndex + 1);
+      });
+    }
   })();
 </script>
 {% endblock %}

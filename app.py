@@ -78,6 +78,20 @@ def create_app():
         migrate_database()
 
     register_routes(app)
+
+    @app.context_processor
+    def inject_seo_context():
+        site_url = os.environ.get("SITE_URL", "").rstrip("/")
+        return {
+            "seo_site_url": site_url,
+            "seo_person_name": "Ebube Okechukwu",
+            "seo_person_alt_name": "Okechukwu Ebube",
+            "seo_person_full_name": "Okechukwu Ebube Joseph",
+            "seo_job_title": "Mechatronics Engineer, Cybersecurity Professional & Software Developer",
+            "seo_location": "Lagos, Nigeria",
+            "seo_email": "jetsamjoseph@gmail.com",
+        }
+
     return app
 
 
@@ -89,6 +103,37 @@ def register_routes(app: Flask):
     @app.route("/")
     def index():
         return render_template("index.html")
+
+    @app.route("/robots.txt")
+    def robots_txt():
+        from flask import Response
+
+        site_url = os.environ.get("SITE_URL", request.url_root.rstrip("/"))
+        content = (
+            "User-agent: *\n"
+            "Allow: /\n"
+            "Disallow: /admin/\n"
+            "Disallow: /admin\n\n"
+            f"Sitemap: {site_url}/sitemap.xml\n"
+        )
+        return Response(content, mimetype="text/plain")
+
+    @app.route("/sitemap.xml")
+    def sitemap_xml():
+        from flask import Response
+
+        site_url = os.environ.get("SITE_URL", request.url_root.rstrip("/"))
+        lastmod = datetime.utcnow().strftime("%Y-%m-%d")
+        xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{site_url}/</loc>
+    <lastmod>{lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>"""
+        return Response(xml, mimetype="application/xml")
 
     @app.route("/health")
     def health():

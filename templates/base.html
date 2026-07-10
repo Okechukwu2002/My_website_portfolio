@@ -3,11 +3,107 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}Ebube Okechukwu - Portfolio{% endblock %}</title>
-    <meta
-      name="description"
-      content="Portfolio of Ebube Okechukwu - Mechatronics Engineer, Cybersecurity Professional, and Software Developer based in Lagos, Nigeria."
-    />
+    {% set page_url = (seo_site_url ~ request.path) if seo_site_url else request.url.split('?')[0] %}
+    {% set image_url = (seo_site_url if seo_site_url else request.url_root.rstrip('/')) ~ url_for('static', filename='images/ebube-okechukwu.png') %}
+    {% set page_title %}{% block title %}{{ seo_person_name }} | {{ seo_person_alt_name }} — Portfolio{% endblock %}{% endset %}
+    {% set page_description %}{% block meta_description %}Official portfolio of {{ seo_person_name }} ({{ seo_person_alt_name }}) — {{ seo_job_title }} based in {{ seo_location }}.{% endblock %}{% endset %}
+
+    <title>{{ page_title }}</title>
+    <meta name="description" content="{{ page_description }}" />
+    <meta name="author" content="{{ seo_person_name }}" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="keywords" content="Ebube Okechukwu, Okechukwu Ebube, Okechukwu Ebube Joseph, Ebube Okechukwu portfolio, Ebube Okechukwu engineer, Okechukwu Ebube cybersecurity, mechatronics engineer Nigeria, cybersecurity professional Lagos, software developer Nigeria, ISC2 certified, Primex360, Kinetic Aegis" />
+    <link rel="canonical" href="{{ page_url }}" />
+
+    <!-- Favicon & app icons (face portrait for Google search results) -->
+    <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32x32.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon-16x16.png') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/apple-touch-icon.png') }}" />
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="{{ page_url }}" />
+    <meta property="og:title" content="{{ page_title }}" />
+    <meta property="og:description" content="{{ page_description }}" />
+    <meta property="og:image" content="{{ image_url }}" />
+    <meta property="og:image:alt" content="{{ seo_person_name }} — {{ seo_person_alt_name }}, professional portrait" />
+    <meta property="og:site_name" content="{{ seo_person_name }} Portfolio" />
+    <meta property="og:locale" content="en_NG" />
+    <meta property="profile:first_name" content="Ebube" />
+    <meta property="profile:last_name" content="Okechukwu" />
+    <meta property="profile:username" content="ebubeokechukwu" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ page_title }}" />
+    <meta name="twitter:description" content="{{ page_description }}" />
+    <meta name="twitter:image" content="{{ image_url }}" />
+    <meta name="twitter:image:alt" content="{{ seo_person_name }} professional portrait" />
+
+    <!-- Structured data for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "{{ page_url }}#person",
+          "name": "{{ seo_person_name }}",
+          "alternateName": ["{{ seo_person_alt_name }}", "{{ seo_person_full_name }}", "Ebube Joseph Okechukwu"],
+          "givenName": "Ebube",
+          "familyName": "Okechukwu",
+          "additionalName": "Joseph",
+          "jobTitle": ["Mechatronics Engineer", "Cybersecurity Professional", "Software Developer", "Mechanical Designer", "Embedded Systems Engineer"],
+          "description": {{ page_description | tojson }},
+          "url": {{ page_url | tojson }},
+          "image": {{ image_url | tojson }},
+          "email": "mailto:{{ seo_email }}",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lagos",
+            "addressCountry": "NG"
+          },
+          "knowsAbout": ["Mechatronics Engineering", "Cybersecurity", "Software Development", "Embedded Systems", "Mechanical Design", "CAD", "Fusion 360", "DevSecOps", "API Security"],
+          "worksFor": [
+            {"@type": "Organization", "name": "Kinetic Aegis"},
+            {"@type": "Organization", "name": "Primex360"},
+            {"@type": "Organization", "name": "BetChief"}
+          ],
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Alex Ekwueme Federal University Ndufu-Alike"
+          },
+          "sameAs": []
+        },
+        {
+          "@type": "WebSite",
+          "@id": "{{ page_url }}#website",
+          "url": {{ page_url | tojson }},
+          "name": {{ (seo_person_name ~ " | " ~ seo_person_alt_name) | tojson }},
+          "description": {{ page_description | tojson }},
+          "publisher": {"@id": "{{ page_url }}#person"},
+          "inLanguage": "en-NG"
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "{{ page_url }}#profilepage",
+          "url": {{ page_url | tojson }},
+          "name": {{ (seo_person_name ~ " Portfolio") | tojson }},
+          "isPartOf": {"@id": "{{ page_url }}#website"},
+          "about": {"@id": "{{ page_url }}#person"},
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": {{ image_url | tojson }},
+            "caption": {{ (seo_person_name ~ " — " ~ seo_person_alt_name) | tojson }}
+          }
+        }
+      ]
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <script>
       // Tailwind color customization
@@ -369,6 +465,76 @@
 
       .mobile-nav-scroll::-webkit-scrollbar {
         display: none;
+      }
+
+      /* Project gallery */
+      .project-shot {
+        transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.4s ease;
+      }
+
+      .project-shot:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.5);
+      }
+
+      .project-shot .project-shot-img {
+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .project-shot:hover .project-shot-img {
+        transform: scale(1.05);
+      }
+
+      .project-shot .project-shot-overlay {
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+
+      .project-shot:hover .project-shot-overlay {
+        opacity: 1;
+      }
+
+      .kinetic-featured-glow {
+        box-shadow: 0 0 70px rgba(251, 191, 36, 0.12),
+          0 0 40px rgba(34, 211, 238, 0.1),
+          0 25px 50px rgba(15, 23, 42, 0.55);
+        position: relative;
+      }
+
+      .kinetic-featured-glow::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(
+          135deg,
+          rgba(251, 191, 36, 0.55),
+          rgba(34, 211, 238, 0.35),
+          rgba(167, 139, 250, 0.45)
+        );
+        background-size: 200% 200%;
+        animation: certBorderShift 5s ease infinite;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      @media (hover: none) {
+        .project-shot .project-shot-overlay {
+          opacity: 0.8;
+          background: linear-gradient(
+            to top,
+            rgba(15, 23, 42, 0.9) 0%,
+            transparent 60%
+          );
+        }
       }
     </style>
   </head>
