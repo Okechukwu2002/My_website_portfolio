@@ -66,6 +66,24 @@ SITEMAP_IMAGES = [
     },
     {
         "page": "/",
+        "loc": "images/projects/villanova-podcast-studio/podcast-lounge-wood-slat.jpg",
+        "title": "Chief's Podcast Studio — Villanova CAD Lounge",
+        "caption": "Photorealistic CAD rendering of Chief's Podcast studio lounge designed by Ebube Okechukwu for Villanova Realty.",
+    },
+    {
+        "page": "/",
+        "loc": "images/projects/villanova-podcast-studio/podcast-interview-set-wide.jpg",
+        "title": "Chief's Podcast Studio — Interview Set",
+        "caption": "Broadcast interview set CAD design with professional studio lighting by Ebube Okechukwu for Villanova Realty.",
+    },
+    {
+        "page": "/",
+        "loc": "images/projects/villanova-podcast-studio/fashion-studio-multi-zone.jpg",
+        "title": "Chief's Podcast Studio — Multi-Zone Production Suite",
+        "caption": "Multi-zone podcast and fashion production studio CAD visualization by Ebube Okechukwu for Villanova Realty.",
+    },
+    {
+        "page": "/",
         "loc": "images/certificates/isc2-certified-cybersecurity.png",
         "title": "ISC2 Certified in Cybersecurity — Ebube Okechukwu",
         "caption": "ISC2 CC certification credential for Ebube Okechukwu (Okechukwu Ebube).",

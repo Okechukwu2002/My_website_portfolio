@@ -68,7 +68,7 @@
             "addressLocality": "Lagos",
             "addressCountry": "NG"
           },
-          "knowsAbout": ["Mechatronics Engineering", "Cybersecurity", "Software Development", "Embedded Systems", "Mechanical Design", "CAD", "Fusion 360", "DevSecOps", "API Security"],
+          "knowsAbout": ["Mechatronics Engineering", "Cybersecurity", "Software Development", "Embedded Systems", "Mechanical Design", "CAD", "Fusion 360", "Interior Design", "Architectural Visualization", "Set Design", "DevSecOps", "API Security"],
           "worksFor": [
             {"@type": "Organization", "name": "Kinetic Aegis"},
             {"@type": "Organization", "name": "Primex360"},
@@ -497,14 +497,25 @@
         opacity: 1;
       }
 
+      .kinetic-featured-glow,
+      .villanova-featured-glow {
+        position: relative;
+      }
+
       .kinetic-featured-glow {
         box-shadow: 0 0 70px rgba(251, 191, 36, 0.12),
           0 0 40px rgba(34, 211, 238, 0.1),
           0 25px 50px rgba(15, 23, 42, 0.55);
-        position: relative;
       }
 
-      .kinetic-featured-glow::before {
+      .villanova-featured-glow {
+        box-shadow: 0 0 70px rgba(56, 189, 248, 0.14),
+          0 0 40px rgba(167, 139, 250, 0.1),
+          0 25px 50px rgba(15, 23, 42, 0.55);
+      }
+
+      .kinetic-featured-glow::before,
+      .villanova-featured-glow::before {
         content: "";
         position: absolute;
         inset: -1px;
@@ -526,6 +537,29 @@
         mask-composite: exclude;
         pointer-events: none;
         z-index: 1;
+      }
+
+      .villanova-featured-glow::before {
+        background: linear-gradient(
+          135deg,
+          rgba(56, 189, 248, 0.55),
+          rgba(167, 139, 250, 0.35),
+          rgba(52, 211, 153, 0.4)
+        );
+      }
+
+      .project-video-wrap video {
+        display: block;
+        width: 100%;
+        max-height: 16rem;
+        object-fit: cover;
+        background: rgb(2 6 23);
+      }
+
+      @media (min-width: 640px) {
+        .project-video-wrap video {
+          max-height: 18rem;
+        }
       }
 
       @media (hover: none) {
